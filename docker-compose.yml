@@ -1,0 +1,19 @@
+services:
+  chat:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # Everything here overrides appsettings.json inside the image.
+      CHATAPP_DATA_DIR: /data              # where chat.db + auth.key live (container path)
+      ASPNETCORE_URLS: http://+:8080
+    volumes:
+      # your Windows folder (left) = /data in the container (right).
+      # Forward slashes; change the left side to wherever you want the data.
+      - "C:/Tmp/ChatApp:/data"
+    healthcheck:
+      # bash /dev/tcp probe: avoids installing curl into the runtime image
+      test: ["CMD-SHELL", "timeout 3 bash -c '</dev/tcp/localhost/8080' || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 3

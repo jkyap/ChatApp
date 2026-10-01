@@ -1,0 +1,47 @@
+:root { color-scheme: light; }
+
+* { box-sizing: border-box; margin: 0; }
+body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; height: 100vh; overflow: hidden; background: #eef1f5; color: #1c2733; }
+.hidden { display: none !important; }
+
+/* auth */
+.auth { display: grid; place-items: center; height: 100vh; }
+.auth-card { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 8px 30px rgba(16,34,53,.12); width: min(90vw, 360px); display: flex; flex-direction: column; gap: .8rem; }
+.auth-card h1 { font-size: 1.6rem; }
+.auth-card .sub { color: #66788c; margin-top: -0.6rem; }
+.auth-card input { padding: .6rem .7rem; border: 1px solid #cdd7e1; border-radius: 8px; font-size: 1rem; }
+.row { display: flex; gap: .5rem; }
+button { background: #1a73e8; color: #fff; border: 0; border-radius: 8px; padding: .6rem 1rem; font-size: 1rem; cursor: pointer; flex: 1; }
+button:disabled { opacity: .5; cursor: default; }
+button.ghost { background: transparent; color: #1a73e8; border: 1px solid #1a73e8; }
+button.small { padding: .25rem .6rem; font-size: .8rem; }
+.error { color: #c5221f; font-size: .9rem; min-height: 1.2em; }
+
+/* layout */
+.app { display: grid; grid-template-columns: 300px 1fr; grid-template-rows: minmax(0, 1fr); height: 100vh; overflow: hidden; }
+.sidebar { border-right: 1px solid #d8e0e8; background: #fff; display: flex; flex-direction: column; min-height: 0; }
+.sidebar header { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; border-bottom: 1px solid #e6ecf2; }
+#new-chat { padding: .6rem; border-bottom: 1px solid #e6ecf2; }
+#new-chat-input { width: 100%; padding: .5rem .7rem; border: 1px solid #cdd7e1; border-radius: 8px; }
+#conversations { list-style: none; overflow-y: auto; flex: 1; }
+#conversations li { display: flex; gap: .6rem; padding: .7rem 1rem; cursor: pointer; align-items: center; }
+#conversations li:hover { background: #f4f7fa; }
+#conversations li.active { background: #e8f0fe; }
+.conv-body { flex: 1; min-width: 0; }
+.conv-top { display: flex; justify-content: space-between; gap: .5rem; }
+.conv-top time { color: #8296aa; font-size: .72rem; }
+.conv-preview { color: #66788c; font-size: .85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* chat pane: min-height:0 lets #messages scroll internally instead of
+   growing the pane (and the page) when messages are long */
+.chat { display: flex; flex-direction: column; min-width: 0; min-height: 0; height: 100%; }
+.chat header { padding: .8rem 1.2rem; background: #fff; border-bottom: 1px solid #d8e0e8; }
+#messages { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+.bubble { max-width: 65%; padding: .5rem .8rem; border-radius: 12px; background: #fff; align-self: flex-start; box-shadow: 0 1px 2px rgba(16,34,53,.1); overflow-wrap: anywhere; }
+.bubble.mine { background: #d3ecff; align-self: flex-end; }
+.bubble time { display: block; font-size: .68rem; color: #8296aa; margin-top: .2rem; text-align: right; }
+#send-form { display: flex; gap: .6rem; padding: .8rem 1.2rem; background: #fff; border-top: 1px solid #d8e0e8; }
+#send-input { flex: 1; padding: .6rem .8rem; border: 1px solid #cdd7e1; border-radius: 20px; font-size: 1rem; }
+#send-form button { flex: none; border-radius: 20px; padding: .5rem 1.2rem; }
+
+@media (max-width: 640px) { .app { grid-template-columns: 110px 1fr; } }

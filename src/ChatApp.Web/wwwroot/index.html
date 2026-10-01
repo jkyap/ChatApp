@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChatApp</title>
+  <link rel="stylesheet" href="styles.css?v=11" />
+</head>
+<body>
+  <div id="auth-view" class="auth hidden">
+    <form id="auth-form" class="auth-card">
+      <h1>ChatApp</h1>
+      <p class="sub"></p>
+      <input id="auth-username" type="text" placeholder="Username (3-20 chars)" autocomplete="username" required />
+      <input id="auth-password" type="password" placeholder="Password (min 8 chars)" autocomplete="current-password" required />
+      <div class="row">
+        <button type="submit" id="auth-submit">Sign in</button>
+        <button type="button" id="auth-toggle" class="ghost">Create account</button>
+      </div>
+      <p id="auth-error" class="error"></p>
+    </form>
+  </div>
+
+  <div id="app-view" class="app hidden">
+    <aside class="sidebar">
+      <header>
+        <strong id="me-name"></strong>
+        <button id="logout" class="ghost small">Sign out</button>
+      </header>
+      <form id="new-chat">
+        <input id="new-chat-input" type="text" placeholder="Start chat: username" autocomplete="off" />
+      </form>
+      <ul id="conversations"></ul>
+    </aside>
+    <main class="chat">
+      <header id="chat-header">
+        <span id="peer-name">Select a conversation</span>
+      </header>
+      <div id="messages"></div>
+      <form id="send-form">
+        <input id="send-input" type="text" placeholder="Type a message…" autocomplete="off" maxlength="4000" disabled />
+        <button id="send-btn" disabled>Send</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="app.js?v=11"></script>
+</body>
+</html>

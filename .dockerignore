@@ -1,0 +1,9 @@
+# keep local build artifacts and dev data out of the image build
+**/bin/
+**/obj/
+src/ChatApp.Web/appdata/
+archive/
+*.user
+.git/
+*.md
+docker-compose.yml
